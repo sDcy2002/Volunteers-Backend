@@ -41,7 +41,10 @@ const Events = sequelize.define('Events', {
         type: DataTypes.STRING,
         allowNull: false
     }
+} ,{
+    timestamps: false
 });
+
 
 //  Tasks Model
 const Tasks = sequelize.define('Tasks', {
@@ -66,8 +69,9 @@ const Tasks = sequelize.define('Tasks', {
         type: DataTypes.TEXT,
         allowNull: true
     }
+} ,{
+    timestamps: false
 });
-
 
 //  Volunteers Model
 const Volunteers = sequelize.define('Volunteers', {
@@ -88,6 +92,8 @@ const Volunteers = sequelize.define('Volunteers', {
         type: DataTypes.DATEONLY,
         allowNull: false
     }
+} ,{
+    timestamps: false
 });
 
 //  Hours_Logged Model
@@ -113,6 +119,8 @@ const Hours_Logged = sequelize.define('Hours_Logged', {
         type: DataTypes.INTEGER,
         allowNull: false
     }
+} ,{
+    timestamps: false
 });
 
 // ตั้งค่าความสัมพันธ์ระหว่างตาราง
