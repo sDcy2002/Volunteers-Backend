@@ -6,12 +6,13 @@ app.use(express.json());
 
 const initializeDatabase = async () => {
     try {
-        await sequelize.sync({ force: true }); // สร้างตารางใหม่
+        await sequelize.sync({ alter: true }); // ตารางเก็บข้อมูล
         console.log("Tables created successfully.");
     } catch (error) {
         console.error("Unable to create tables: ", error);
     }
 };
+
 
 // CRUD สำหรับ Events
 app.get('/events', async (req, res) => {

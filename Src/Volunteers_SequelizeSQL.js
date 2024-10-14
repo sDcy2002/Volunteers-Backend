@@ -1,11 +1,12 @@
 const express = require('express');
-const { Sequelize, DataTypes } = require('sequelize');
+const Sequelize = require('sequelize');
 const app = express();
 
 app.use(express.json());
 
 // สร้างตารางข้อมูล SQlite
 const sequelize = new Sequelize({
+    host:'localhost',
     dialect: 'sqlite',
     storage: '../Database/Volunteers_database.sqlite'
 });
@@ -13,32 +14,32 @@ const sequelize = new Sequelize({
 //  Events Model
 const Events = sequelize.define('Events', {
     ID: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
     Volunteer_ID: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull: false
     },
     Hours_Logged_ID: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull: false
     },
     Event_Name: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: false
     },
     Event_Date: {
-        type: DataTypes.DATEONLY,
+        type: Sequelize.DATEONLY,
         allowNull: false
     },
     Location: {
-        type: DataTypes.TEXT,
+        type: Sequelize.TEXT,
         allowNull: true
     },
     Organizer: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: false
     }
 } ,{
@@ -49,24 +50,24 @@ const Events = sequelize.define('Events', {
 //  Tasks Model
 const Tasks = sequelize.define('Tasks', {
     ID: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
     Task_Name: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: false
     },
     Assigned_To: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: false
     },
     Deadline: {
-        type: DataTypes.DATEONLY,
+        type: Sequelize.DATEONLY,
         allowNull: false
     },
     Status: {
-        type: DataTypes.TEXT,
+        type: Sequelize.TEXT,
         allowNull: true
     }
 } ,{
@@ -76,20 +77,20 @@ const Tasks = sequelize.define('Tasks', {
 //  Volunteers Model
 const Volunteers = sequelize.define('Volunteers', {
     ID: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
     Name: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: false
     },
     Age: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull: false
     },
     Joining_Date: {
-        type: DataTypes.DATEONLY,
+        type: Sequelize.DATEONLY,
         allowNull: false
     }
 } ,{
@@ -99,24 +100,24 @@ const Volunteers = sequelize.define('Volunteers', {
 //  Hours_Logged Model
 const Hours_Logged = sequelize.define('Hours_Logged', {
     ID: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
     Log_ID: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull: false
     },
     Task_ID: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull: false
     },
     Date_Worked: {
-        type: DataTypes.DATEONLY,
+        type: Sequelize.DATEONLY,
         allowNull: false
     },
     Hours_Worked: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull: false
     }
 } ,{
